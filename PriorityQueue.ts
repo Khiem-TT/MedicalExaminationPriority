@@ -18,16 +18,9 @@ export class PriorityQueue<T> {
         if (this.isEmpty()) {
             return null;
         }
-        let min = this.data[0].code;
-        let minIndex = 0;
-        this.data.forEach((item, index) => {
-            if (item.code < min) {
-                min = item.code;
-                minIndex = index;
-            }
+        this.data.sort((a, b) => {
+            return a.code - b.code;
         })
-        let obj = this.data[minIndex];
-        this.data.splice(minIndex, 1);
-        return obj;
+        return this.data.shift();
     }
 }
